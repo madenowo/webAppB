@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Add Post</title>
+</head>
+
+<body>
+  <h2>Add Post</h2>
+  <form action="/items/add" method="post" enctype="multipart/form-data">
+    <div class="form-group">
+      <label for="title">Title:</label>
+      <input type="text" class="form-control" name="title" id="title" required>
+    </div>
+    <div class="form-group">
+      <label for="body">Body:</label>
+      <textarea class="form-control" name="body" id="body" required></textarea>
+    </div>
+    <div class="form-group">
+      <label for="category">Category:</label>
+      {{#if categories}}
+      <select class="form-control" name="category" id="category">
+        <option value="">Select Category</option>
+        {{#each categories}}
+        <option value="{{id}}">{{category}}</option>
+        {{/each}}
+      </select>
+      {{else}}
+      <div>No Categories</div>
+      {{/if}}
+    </div>
+    <div class="form-group">
+      <label for="featureImage">Feature Image:</label>
+      <input type="file" class="form-control" name="featureImage" id="featureImage">
+    </div>
+    <div class="form-group">
+      <label for="price">Price:</label>
+      <input type="number" step="0.01" class="form-control" name="price" id="price" required>
+    </div>
+    <div class="form-group">
+      <label for="published">Published:</label>
+      <input type="checkbox" class="form-control" name="published" id="published" value="1">
+    </div>
+    <button type="submit" class="btn btn-primary">Add Post</button>
+  </form>
+</body>
+
+</html>
